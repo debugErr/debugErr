@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "ckolkman.vscode-postgres",
+    "aaron-bond.better-comments",
+    "dbaeumer.vscode-eslint",
+    "mhutchie.git-graph",
+    "esbenp.prettier-vscode",
+    "rvest.vs-code-prettier-eslint",
+    "ChakrounAnas.turbo-console-log"
+  ]
+}
