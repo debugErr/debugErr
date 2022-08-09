@@ -6,4 +6,4 @@ const LogIn_SignUp = () => {
   )
 }
 
-export default LogIn_SignUp
+export default LogIn_SignUp 
