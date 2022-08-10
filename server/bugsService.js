@@ -7,19 +7,19 @@ const BugsService = {
   getAllBugsHR(db) {
     return db
       .raw(`
-      SELECT  
-      "idBug" AS ID,
-      "title" AS "Bug Title",
-      "apptable"."appName" AS "Application",
-      "apptable"."appVersion" AS "Version",
-      "status" AS "Status",
-      "stage" AS "Stage",
-      "submitter"."firstName" AS "Submitted By",
-      "engineer"."firstName" AS "Assigned To"
-FROM "Bug"
-INNER JOIN "User" submitter ON "Bug"."userSubmitted" = "submitter"."idUser"
-INNER JOIN "User" engineer ON "Bug"."engineerAssigned" = "engineer"."idUser"
-INNER JOIN "App" apptable ON "Bug"."app" = "apptable"."idApp";
+        SELECT  
+          "idBug" AS ID,
+          "title" AS "Bug Title",
+          "apptable"."appName" AS "Application",
+          "apptable"."appVersion" AS "Version",
+          "status" AS "Status",
+          "stage" AS "Stage",
+          "submitter"."firstName" AS "Submitted By",
+          "engineer"."firstName" AS "Assigned To"
+        FROM "Bug"
+        INNER JOIN "User" submitter ON "Bug"."userSubmitted" = "submitter"."idUser"
+        INNER JOIN "User" engineer ON "Bug"."engineerAssigned" = "engineer"."idUser"
+        INNER JOIN "App" apptable ON "Bug"."app" = "apptable"."idApp";
       `)
   },
 
