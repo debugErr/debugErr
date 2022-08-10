@@ -1,5 +1,5 @@
-import { buttonGroupClasses } from '@mui/material';
 import React from 'react';
+import { Typography } from '@mui/material';
 
 function Description({ description }) {
   return (
@@ -11,7 +11,7 @@ function Description({ description }) {
         width: 'max-content',
       }}
     >
-      <h4>Description</h4>
+      <Typography>Description</Typography>
       {description}
     </div>
   );

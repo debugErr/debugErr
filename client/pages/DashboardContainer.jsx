@@ -1,25 +1,23 @@
 import React, { useState } from 'react';
 
 // MUI
-import Grid from '@mui/material/Grid'; // Grid version 1
-import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
-import Paper from '@mui/material/core/Paper';
-import Box from '@mui/material/Box';
+import { Typography } from '@mui/material/styles/createTypography';
+// GRID IMPORTS
+import { Paper, Grid } from '@mui/material';
 
 // COMPONENTS
-import NavBar from '../components/NavBar';
-import List from '../components/List';
-import BugTitle from '../components/BugTitle';
-import Description from '../components/Description';
-import EngineerAssigned from '../components/EngineerAssigned';
-import Status_Severity from '../components/Status_Severity';
-import Platform from '../components/Platform';
-import UserSubmitted from '../components/UserSubmitted';
-import StepsToRecreate from '../components/StepsToRecreate';
-import ResolutionStatement from '../components/ResolutionStatement';
 import AppName from '../components/AppName';
 import AppVersion from '../components/AppVersion';
+import BugTitle from '../components/BugTitle';
 import Created_Modified_at from '../components/Created_Modified_at';
+import Description from '../components/Description';
+import EngineerAssigned from '../components/EngineerAssigned';
+import List from '../components/List';
+import Platform from '../components/Platform';
+import ResolutionStatement from '../components/ResolutionStatement';
+import Status_Severity from '../components/Status_Severity';
+import StepsToRecreate from '../components/StepsToRecreate';
+import UserSubmitted from '../components/UserSubmitted';
 
 const DUMMY_DATA = [
   {
@@ -93,23 +91,86 @@ const Dashboard = () => {
   const [selectedBug, setSelectedBug] = useState(bugs[0]);
 
   return (
-
     <div>
       <Grid container>
-        <Grid item>
-          <Paper>jared</Paper>
+        <Grid item md={3}>
+          <Paper>
+            <BugTitle title={selectedBug.title} />
+          </Paper>
         </Grid>
         <Grid item>
-          <Paper>Christina</Paper>
+          <Paper>
+            <Status_Severity
+              status={selectedBug.status}
+              severity={selectedBug.severity}
+            />
+          </Paper>
         </Grid>
         <Grid item>
-          <Paper>ada</Paper>
+          <Paper>
+            <AppName appName={selectedBug.app} />
+          </Paper>
         </Grid>
         <Grid item>
-          <Paper>cocnut</Paper>
+          <Paper>
+            <AppVersion appVersion={selectedBug.appVersion} />
+          </Paper>
         </Grid>
         <Grid item>
-          <Paper>57</Paper>
+          <Paper>
+            <Platform platform={selectedBug.platform} />
+          </Paper>
+        </Grid>
+        <Grid item>
+          <Paper>
+            <Platform platform={selectedBug.platform} />
+          </Paper>
+        </Grid>
+        <Grid item>
+          <Paper>
+            <Created_Modified_at
+              createdAt={selectedBug.createdAt}
+              modifiedAt={selectedBug.modifiedAt}
+            />
+          </Paper>
+        </Grid>
+        <Grid item>
+          <Paper>
+            <UserSubmitted submittedBy={selectedBug.userSubmitted} />
+          </Paper>
+        </Grid>
+        <Grid item>
+          <Paper>
+            <EngineerAssigned engineerAssigned={selectedBug.engineerAssigned} />
+          </Paper>
+        </Grid>
+        <Grid item>
+          <Paper>
+            <Description description={selectedBug.description} />
+          </Paper>
+        </Grid>
+        <Grid item>
+          <Paper>
+            <EngineerAssigned engineerAssigned={selectedBug.engineerAssigned} />
+          </Paper>
+        </Grid>
+        <Grid item>
+          <Paper>
+            <StepsToRecreate recreationSteps={selectedBug.stepsToRecreate} />
+          </Paper>
+        </Grid>
+        <Grid item>
+          <Paper>
+            {' '}
+            <ResolutionStatement
+              resolutionStatement={selectedBug.resolutionStatement}
+            />
+          </Paper>
+        </Grid>
+        <Grid item>
+          <Paper>
+            <List bugList={bugs} selectBug={setSelectedBug} />
+          </Paper>
         </Grid>
       </Grid>
     </div>

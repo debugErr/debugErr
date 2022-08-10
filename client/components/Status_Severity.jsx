@@ -1,9 +1,10 @@
 import React from 'react';
+import { Typography } from '@mui/material';
 
 function Status_Severity({ status, severity }) {
   return (
     <div style={{ border: '1px solid black', width: 'max-content' }}>
-      <h4>Status and Severity</h4>
+      <Typography>Status and Severity</Typography>
       {status} {severity}
     </div>
   );

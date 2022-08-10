@@ -1,9 +1,12 @@
 import React from 'react';
 
+import { Typography } from '@mui/material';
+
+
 function AppName({ appName }) {
   return (
     <div style={{ border: '1px solid black', width: 'max-content' }}>
-      <h4>AppName</h4>
+      <Typography>AppName</Typography>
       {appName}
     </div>
   );

@@ -1,9 +1,10 @@
 import React from 'react';
+import { Typography } from '@mui/material';
 
 function StepsToRecreate({ recreationSteps }) {
   return (
     <div style={{ border: '1px solid black', width: 'max-content' }}>
-      <h4>StepsToRecreate</h4>
+      <Typography>StepsToRecreate</Typography>
       {recreationSteps}
     </div>
   );
