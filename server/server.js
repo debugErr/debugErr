@@ -29,6 +29,10 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(path.resolve(__dirname, '../build/index.html'));
 })
 
+app.get('*', (req, res) => {
+  return res.status(200).sendFile(path.resolve(__dirname, '../build/index.html'));
+})
+
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
