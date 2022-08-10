@@ -12,9 +12,8 @@ import UserSubmitted from '../components/UserSubmitted';
 import StepsToRecreate from '../components/StepsToRecreate';
 import ResolutionStatement from '../components/ResolutionStatement';
 import AppName from '../components/AppName';
-import CreatedAt from '../components/CreatedAt';
-import ModifiedAt from '../components/ModifiedAt';
 import AppVersion from '../components/AppVersion';
+import Created_Modified_at from '../components/Created_Modified_at';
 
 const DUMMY_DATA = [
   {
@@ -98,13 +97,14 @@ const Dashboard = () => {
       <AppName appName={selectedBug.app} />
       <AppVersion appVersion={selectedBug.appVersion} />
       <Platform platform={selectedBug.platform} />
-      <CreatedAt createdAt={selectedBug.createdAt} />
-      <ModifiedAt modifiedAt={selectedBug.modifiedAt} />
+      <Created_Modified_at createdAt={selectedBug.createdAt} modifiedAt={selectedBug.modifiedAt} />
       <UserSubmitted submittedBy={selectedBug.userSubmitted} />
       <EngineerAssigned engineerAssigned={selectedBug.engineerAssigned} />
       <Description description={selectedBug.description} />
       <StepsToRecreate recreationSteps={selectedBug.stepsToRecreate} />
-      <ResolutionStatement resolutionStatement={selectedBug.resolutionStatement} />
+      <ResolutionStatement
+        resolutionStatement={selectedBug.resolutionStatement}
+      />
       <List bugList={bugs} selectBug={setSelectedBug} />
     </div>
   );

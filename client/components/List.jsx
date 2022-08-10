@@ -35,7 +35,6 @@ export default function List({ bugList, selectBug }) {
         onRowClick={(rowData, rowState) => {
           console.log(rowData.row);
           selectBug(rowData.row);
-    
         }}
       />
     </div>
