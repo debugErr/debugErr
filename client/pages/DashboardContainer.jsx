@@ -5,10 +5,16 @@ import NavBar from '../components/NavBar';
 import List from '../components/List';
 import BugTitle from '../components/BugTitle';
 import Description from '../components/Description';
-import Notes from '../components/Notes';
 import EngineerAssigned from '../components/EngineerAssigned';
 import Status_Severity from '../components/Status_Severity';
 import Platform from '../components/Platform';
+import UserSubmitted from '../components/UserSubmitted';
+import StepsToRecreate from '../components/StepsToRecreate';
+import ResolutionStatement from '../components/ResolutionStatement';
+import AppName from '../components/AppName';
+import CreatedAt from '../components/CreatedAt';
+import ModifiedAt from '../components/ModifiedAt';
+import AppVersion from '../components/AppVersion';
 
 const DUMMY_DATA = [
   {
@@ -20,6 +26,10 @@ const DUMMY_DATA = [
     status: 'assigned',
     severity: 'high',
     app: 'ourApp',
+    createdAt: '06/29/93',
+    modifiedAt: '05/09/22',
+    stepsToRecreate: 'these are definetly the steps',
+    resolutionStatement: 'this is a problem',
     appVersion: 'v0.1',
     platform: 'Mac',
   },
@@ -31,19 +41,27 @@ const DUMMY_DATA = [
     userSubmitted: 'Jim',
     status: 'assigned',
     severity: 'high',
+    stepsToRecreate: 'these are not the steps',
+    resolutionStatement: 'this is definetly a resolution',
     app: 'ourApp',
+    createdAt: '06/29/93',
+    modifiedAt: '05/09/22',
     appVersion: 'v0.1',
     platform: 'Mac',
   },
   {
     id: 59,
-    title: 'Bug 3',
-    description: 'Dark mode does not work.',
-    engineerAssigned: 'Jim',
     userSubmitted: 'Moonhe',
+    engineerAssigned: 'Jim',
+    app: 'ourApp',
+    title: 'Bug 3',
     status: 'in progress',
     severity: 'high',
-    app: 'ourApp',
+    stepsToRecreate: 'these are the steps',
+    resolutionStatement: 'this is a resolution',
+    description: 'Dark mode does not work.',
+    createdAt: '06/29/93',
+    modifiedAt: '05/09/22',
     appVersion: 'v0.1',
     platform: 'Mac',
   },
@@ -53,9 +71,13 @@ const DUMMY_DATA = [
     description: 'Login does not work',
     engineerAssigned: 'Jaerd',
     userSubmitted: 'Jim',
+    stepsToRecreate: 'these are for sure the steps',
+    resolutionStatement: 'this is not a resolution',
     status: 'resolved',
     severity: 'low',
     app: 'debugERR',
+    createdAt: '06/29/93',
+    modifiedAt: '05/09/22',
     appVersion: 'v0.1',
     platform: 'Windows',
   },
@@ -73,10 +95,17 @@ const Dashboard = () => {
         status={selectedBug.status}
         severity={selectedBug.severity}
       />
+      <AppName appName={selectedBug.app} />
+      <AppVersion appVersion={selectedBug.appVersion} />
       <Platform platform={selectedBug.platform} />
+      <CreatedAt createdAt={selectedBug.createdAt} />
+      <ModifiedAt modifiedAt={selectedBug.modifiedAt} />
+      <UserSubmitted submittedBy={selectedBug.userSubmitted} />
+      <EngineerAssigned engineerAssigned={selectedBug.engineerAssigned} />
       <Description description={selectedBug.description} />
+      <StepsToRecreate recreationSteps={selectedBug.stepsToRecreate} />
+      <ResolutionStatement resolutionStatement={selectedBug.resolutionStatement} />
       <List bugList={bugs} selectBug={setSelectedBug} />
-      <Notes notes={selectedBug.notes} />
     </div>
   );
 };
