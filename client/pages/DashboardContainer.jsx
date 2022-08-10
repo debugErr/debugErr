@@ -7,6 +7,7 @@ import List from '../components/List';
 import Description from '../components/Description';
 import Notes from '../components/Notes';
 import EngineerAssigned from '../components/EngineerAssigned';
+import Status_Severity from '../components/Status_Severity';
 
 const DUMMY_DATA = [
   {
@@ -63,11 +64,10 @@ const Dashboard = () => {
   const [bugs, setBugs] = useState(DUMMY_DATA);
   const [selectedBug, setSelectedBug] = useState(bugs[0]);
 
-
-
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
+      <Status_Severity status={selectedBug.status} severity={selectedBug.severity} />
       <Description bug={selectedBug.description} />
       <List bugList={bugs} selectBug={setSelectedBug} />
       <Notes notes={selectedBug.notes}/>
