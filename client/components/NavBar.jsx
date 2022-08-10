@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 function NavBar() {
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <Link to='/'>debugErr</Link>
+      <Link to='/'><Button variant="text">debugErr</Button></Link>
       <div style={{ display: 'flex' }}>
-        <Link to='/addBug'>Add New Bug</Link>
-        <Link to='/login'>Sign In</Link>
+        <Link to='/addBug'><Button variant="text">Add New Bug</Button></Link>
+        <Link to='/login'><Button variant="text">Sign In</Button></Link>
       </div>
     </div>
   );

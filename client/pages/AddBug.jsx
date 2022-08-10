@@ -1,8 +1,12 @@
 import React from 'react'
+import NavBar from '../components/NavBar';
 
 function AddBug() {
-  return (
-    <div>AddBug</div>
+  return (    
+    <div>
+     <NavBar />
+      AddBug
+    </div>
   )
 }
 
