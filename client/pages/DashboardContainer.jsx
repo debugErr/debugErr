@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
-
 // COMPONENTS
 import NavBar from '../components/NavBar';
 import List from '../components/List';
+import BugTitle from '../components/BugTitle';
 import Description from '../components/Description';
 import Notes from '../components/Notes';
 import EngineerAssigned from '../components/EngineerAssigned';
 import Status_Severity from '../components/Status_Severity';
+import Platform from '../components/Platform';
 
 const DUMMY_DATA = [
   {
@@ -20,7 +21,7 @@ const DUMMY_DATA = [
     severity: 'high',
     app: 'ourApp',
     appVersion: 'v0.1',
-    platform: 'Mac'
+    platform: 'Mac',
   },
   {
     id: 58,
@@ -32,7 +33,7 @@ const DUMMY_DATA = [
     severity: 'high',
     app: 'ourApp',
     appVersion: 'v0.1',
-    platform: 'Mac'
+    platform: 'Mac',
   },
   {
     id: 59,
@@ -44,7 +45,7 @@ const DUMMY_DATA = [
     severity: 'high',
     app: 'ourApp',
     appVersion: 'v0.1',
-    platform: 'Mac'
+    platform: 'Mac',
   },
   {
     id: 60,
@@ -56,7 +57,7 @@ const DUMMY_DATA = [
     severity: 'low',
     app: 'debugERR',
     appVersion: 'v0.1',
-    platform: 'Windows'
+    platform: 'Windows',
   },
 ];
 
@@ -67,10 +68,15 @@ const Dashboard = () => {
   return (
     <div>
       {/* <NavBar /> */}
-      <Status_Severity status={selectedBug.status} severity={selectedBug.severity} />
-      <Description bug={selectedBug.description} />
+      <BugTitle title={selectedBug.title} />
+      <Status_Severity
+        status={selectedBug.status}
+        severity={selectedBug.severity}
+      />
+      <Platform platform={selectedBug.platform} />
+      <Description description={selectedBug.description} />
       <List bugList={bugs} selectBug={setSelectedBug} />
-      <Notes notes={selectedBug.notes}/>
+      <Notes notes={selectedBug.notes} />
     </div>
   );
 };
