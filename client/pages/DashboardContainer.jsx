@@ -115,29 +115,6 @@ const Dashboard = () => {
         </Grid>
       </Grid>
     </div>
-
-    // <div>
-    //   <BugTitle title={selectedBug.title} />
-    //   <Status_Severity
-    //     status={selectedBug.status}
-    //     severity={selectedBug.severity}
-    //   />
-    //   <AppName appName={selectedBug.app} />
-    //   <AppVersion appVersion={selectedBug.appVersion} />
-    //   <Platform platform={selectedBug.platform} />
-    //   <Created_Modified_at
-    //     createdAt={selectedBug.createdAt}
-    //     modifiedAt={selectedBug.modifiedAt}
-    //   />
-    //   <UserSubmitted submittedBy={selectedBug.userSubmitted} />
-    //   <EngineerAssigned engineerAssigned={selectedBug.engineerAssigned} />
-    //   <Description description={selectedBug.description} />
-    //   <StepsToRecreate recreationSteps={selectedBug.stepsToRecreate} />
-    //   <ResolutionStatement
-    //     resolutionStatement={selectedBug.resolutionStatement}
-    //   />
-    //   <List bugList={bugs} selectBug={setSelectedBug} />
-    // </div>
   );
 };
 
