@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import UserContext from '../UserContext';
 
 // MUI
 import { Typography } from '@mui/material/styles/createTypography';
@@ -87,6 +88,7 @@ const DUMMY_DATA = [
 ];
 
 const Dashboard = () => {
+  const { user, setUser } = useContext(UserContext);
   const [bugs, setBugs] = useState(DUMMY_DATA);
   const [selectedBug, setSelectedBug] = useState(bugs[0]);
 
