@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 // MUI
 import Grid from '@mui/material/Grid'; // Grid version 1
 import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
+import Paper from '@mui/material/core/Paper';
 import Box from '@mui/material/Box';
 
 // COMPONENTS
@@ -92,28 +93,49 @@ const Dashboard = () => {
   const [selectedBug, setSelectedBug] = useState(bugs[0]);
 
   return (
+
     <div>
-      <BugTitle title={selectedBug.title} />
-      <Status_Severity
-        status={selectedBug.status}
-        severity={selectedBug.severity}
-      />
-      <AppName appName={selectedBug.app} />
-      <AppVersion appVersion={selectedBug.appVersion} />
-      <Platform platform={selectedBug.platform} />
-      <Created_Modified_at
-        createdAt={selectedBug.createdAt}
-        modifiedAt={selectedBug.modifiedAt}
-      />
-      <UserSubmitted submittedBy={selectedBug.userSubmitted} />
-      <EngineerAssigned engineerAssigned={selectedBug.engineerAssigned} />
-      <Description description={selectedBug.description} />
-      <StepsToRecreate recreationSteps={selectedBug.stepsToRecreate} />
-      <ResolutionStatement
-        resolutionStatement={selectedBug.resolutionStatement}
-      />
-      <List bugList={bugs} selectBug={setSelectedBug} />
+      <Grid container>
+        <Grid item>
+          <Paper>jared</Paper>
+        </Grid>
+        <Grid item>
+          <Paper>Christina</Paper>
+        </Grid>
+        <Grid item>
+          <Paper>ada</Paper>
+        </Grid>
+        <Grid item>
+          <Paper>cocnut</Paper>
+        </Grid>
+        <Grid item>
+          <Paper>57</Paper>
+        </Grid>
+      </Grid>
     </div>
+
+    // <div>
+    //   <BugTitle title={selectedBug.title} />
+    //   <Status_Severity
+    //     status={selectedBug.status}
+    //     severity={selectedBug.severity}
+    //   />
+    //   <AppName appName={selectedBug.app} />
+    //   <AppVersion appVersion={selectedBug.appVersion} />
+    //   <Platform platform={selectedBug.platform} />
+    //   <Created_Modified_at
+    //     createdAt={selectedBug.createdAt}
+    //     modifiedAt={selectedBug.modifiedAt}
+    //   />
+    //   <UserSubmitted submittedBy={selectedBug.userSubmitted} />
+    //   <EngineerAssigned engineerAssigned={selectedBug.engineerAssigned} />
+    //   <Description description={selectedBug.description} />
+    //   <StepsToRecreate recreationSteps={selectedBug.stepsToRecreate} />
+    //   <ResolutionStatement
+    //     resolutionStatement={selectedBug.resolutionStatement}
+    //   />
+    //   <List bugList={bugs} selectBug={setSelectedBug} />
+    // </div>
   );
 };
 
