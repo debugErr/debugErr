@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 
+// MUI
+import Grid from '@mui/material/Grid'; // Grid version 1
+import Grid2 from '@mui/material/Unstable_Grid2'; // Grid version 2
+import Box from '@mui/material/Box';
+
 // COMPONENTS
 import NavBar from '../components/NavBar';
 import List from '../components/List';
@@ -88,7 +93,6 @@ const Dashboard = () => {
 
   return (
     <div>
-      {/* <NavBar /> */}
       <BugTitle title={selectedBug.title} />
       <Status_Severity
         status={selectedBug.status}
@@ -97,7 +101,10 @@ const Dashboard = () => {
       <AppName appName={selectedBug.app} />
       <AppVersion appVersion={selectedBug.appVersion} />
       <Platform platform={selectedBug.platform} />
-      <Created_Modified_at createdAt={selectedBug.createdAt} modifiedAt={selectedBug.modifiedAt} />
+      <Created_Modified_at
+        createdAt={selectedBug.createdAt}
+        modifiedAt={selectedBug.modifiedAt}
+      />
       <UserSubmitted submittedBy={selectedBug.userSubmitted} />
       <EngineerAssigned engineerAssigned={selectedBug.engineerAssigned} />
       <Description description={selectedBug.description} />
