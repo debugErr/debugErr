@@ -1,17 +1,15 @@
-import { buttonGroupClasses } from '@mui/material';
 import React from 'react';
+import { Typography } from '@mui/material';
 
 function Description({ description }) {
   return (
     <div
       style={{
         border: '1px solid black',
-        display: 'flex',
-        flexDirection: 'column',
-        width: 'max-content',
+        textAlign: 'center'
       }}
     >
-      <h4>Description</h4>
+      <Typography>Description</Typography>
       {description}
     </div>
   );
