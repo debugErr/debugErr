@@ -6,9 +6,10 @@ import NavBar from '../components/NavBar';
 const initialCredential = {
   username: "",
   password: "",
+  passwordConfirm:""
 };
 
-const LogIn_SignUp = () => {
+const SignUp = () => {
   const [credential, setCredential] = useState(initialCredential);
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -17,6 +18,7 @@ const LogIn_SignUp = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    //if(credential.password !==)
     console.log(credential) // post request to login endpoint
   }
 
@@ -26,14 +28,14 @@ const LogIn_SignUp = () => {
 
       <div style={{textAlign:'center'}}>
         <FormControl variant="standard">
-          <TextField id="username" value={credential.username} onChange={handleInputChange} label="User Name" variant="standard" />
+          <TextField id="username" value={credential.username} onChange={handleInputChange} label="Create User Name" variant="standard" />
           <TextField id="password" type="password" value={credential.password} onChange={handleInputChange} label="Password" variant="standard" />
-          <Button type="submit" onClick={handleFormSubmit}>Sign In</Button>
-          <Link to='/signup'> Sign up for an account: </Link>
+          <TextField id="passwordConfirm" type="passwordConfirm" value={credential.passwordConfirm} onChange={handleInputChange} label="Re-Enter Password" variant="standard" />
+          <Button type="submit" onClick={handleFormSubmit}>Create Account</Button>
         </FormControl>
       </div>
     </>
   )
 }
 
-export default LogIn_SignUp 
+export default SignUp 
