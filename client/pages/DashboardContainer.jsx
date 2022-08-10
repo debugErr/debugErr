@@ -92,82 +92,76 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Grid container>
+      <Grid container spacing={2}>
         <Grid item md={3}>
           <Paper>
             <BugTitle title={selectedBug.title} />
           </Paper>
         </Grid>
-        <Grid item>
+        <Grid item md={3}>
           <Paper>
-            <Status_Severity
-              status={selectedBug.status}
-              severity={selectedBug.severity}
-            />
-          </Paper>
-        </Grid>
-        <Grid item>
-          <Paper>
-            <AppName appName={selectedBug.app} />
-          </Paper>
-        </Grid>
-        <Grid item>
-          <Paper>
-            <AppVersion appVersion={selectedBug.appVersion} />
-          </Paper>
-        </Grid>
-        <Grid item>
-          <Paper>
-            <Platform platform={selectedBug.platform} />
-          </Paper>
-        </Grid>
-        <Grid item>
-          <Paper>
-            <Platform platform={selectedBug.platform} />
-          </Paper>
-        </Grid>
-        <Grid item>
-          <Paper>
-            <Created_Modified_at
+          <Created_Modified_at
               createdAt={selectedBug.createdAt}
               modifiedAt={selectedBug.modifiedAt}
             />
           </Paper>
         </Grid>
-        <Grid item>
+        <Grid item md={3}>
+          <Paper>
+            <AppName appName={selectedBug.app} />
+          </Paper>
+        </Grid>
+        <Grid item md={3}>
+          <Paper>
+            <AppVersion appVersion={selectedBug.appVersion} />
+          </Paper>
+        </Grid>
+        <Grid item md={3}>
+          <Paper>
+            <Platform platform={selectedBug.platform} />
+          </Paper>
+        </Grid>
+        <Grid item md={3}>
+          <Paper>
+            <Platform platform={selectedBug.platform} />
+          </Paper>
+        </Grid>
+        <Grid item md={3}>
+          <Paper>
+          <Status_Severity
+              status={selectedBug.status}
+              severity={selectedBug.severity}
+            />
+          </Paper>
+        </Grid>
+        <Grid item md={3}>
           <Paper>
             <UserSubmitted submittedBy={selectedBug.userSubmitted} />
           </Paper>
         </Grid>
-        <Grid item>
+        <Grid item md={2}>
           <Paper>
             <EngineerAssigned engineerAssigned={selectedBug.engineerAssigned} />
           </Paper>
         </Grid>
-        <Grid item>
+        <Grid item md={4}>
           <Paper>
             <Description description={selectedBug.description} />
           </Paper>
         </Grid>
-        <Grid item>
+        <Grid item md={4}>
           <Paper>
-            <EngineerAssigned engineerAssigned={selectedBug.engineerAssigned} />
+          <StepsToRecreate recreationSteps={selectedBug.stepsToRecreate} />
           </Paper>
         </Grid>
-        <Grid item>
+        <Grid item md={2}>
           <Paper>
-            <StepsToRecreate recreationSteps={selectedBug.stepsToRecreate} />
-          </Paper>
-        </Grid>
-        <Grid item>
-          <Paper>
-            {' '}
-            <ResolutionStatement
+          <ResolutionStatement
               resolutionStatement={selectedBug.resolutionStatement}
             />
           </Paper>
         </Grid>
-        <Grid item>
+        <Grid item md={9}>
           <Paper>
             <List bugList={bugs} selectBug={setSelectedBug} />
           </Paper>

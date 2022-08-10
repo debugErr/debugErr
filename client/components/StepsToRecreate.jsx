@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 
 function StepsToRecreate({ recreationSteps }) {
   return (
-    <div style={{ border: '1px solid black', width: 'max-content' }}>
+    <div style={{ border: '1px solid black', textAlign: 'center' }}>
       <Typography>StepsToRecreate</Typography>
       {recreationSteps}
     </div>

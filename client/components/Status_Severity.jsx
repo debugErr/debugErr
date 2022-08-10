@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 
 function Status_Severity({ status, severity }) {
   return (
-    <div style={{ border: '1px solid black', width: 'max-content' }}>
+    <div style={{ border: '1px solid black', textAlign: 'center' }}>
       <Typography>Status and Severity</Typography>
       {status} {severity}
     </div>
