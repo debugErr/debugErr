@@ -26,6 +26,7 @@ const Dashboard = () => {
   const { user, setUser } = useContext(UserContext);
   const [bugs, setBugs] = useState([]);
   const [selectedBug, setSelectedBug] = useState({});
+  const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     fetch('/bugs').then((res) => res.json())
@@ -35,6 +36,51 @@ const Dashboard = () => {
         setSelectedBug(bugs[0])
       });
   }, []);
+
+  useEffect(() => {
+    fetch(`/bugs/${selectedBug.id}`).then(res => res.json())
+    .then(data => {
+        console.log(data)
+        setNotes(data)
+      })
+  }, [selectedBug]);
+
+  // {
+  //   "bug": [
+  //     {
+  //       "id": 1,
+  //       "title": "Query Mixup",
+  //       "Application": "Solid Structure",
+  //       "Version": "1.0 BETA",
+  //       "Status": "Assigned",
+  //       "Stage": "Testing",
+  //       "Severity": "Typo",
+  //       "Steps To Recreate": "Click on enter button on UI and then reload the page",
+  //       "Resolution Statement": null,
+  //       "Submitted By": "Jim",
+  //       "Assigned To": "Jared"
+  //     }
+  //   ],
+  //   "eNotes": [
+  //     {
+  //       "id": 5,
+  //       "Notes": "Verification needed before continuing",
+  //       "Note Title": "Verify Bug",
+  //       "Submitted By": "Jared",
+  //       "Bug Title": "Query Mixup",
+  //       "Bug ID": 1
+  //     },
+  //     {
+  //       "id": 1,
+  //       "Notes": "Bug has been assigned to an engineer",
+  //       "Note Title": "Bug #3 Note #1",
+  //       "Submitted By": "Brandon",
+  //       "Bug Title": "Query Mixup",
+  //       "Bug ID": 1
+  //     }
+  //   ]
+  // }
+
 
   return (
     <div>
@@ -68,11 +114,11 @@ const Dashboard = () => {
             <Platform platform={selectedBug.platform} />
           </Paper>
         </Grid> */}
-        {/* <Grid item md={3}>
+        {notes.length ? <Grid item md={3}>
           <Paper>
-            <Platform platform={selectedBug.platform} />
+            <Platform notes={notes} />
           </Paper>
-        </Grid> */}
+        </Grid> : null }
         <Grid item md={3}>
           <Paper>
           <Status_Severity
