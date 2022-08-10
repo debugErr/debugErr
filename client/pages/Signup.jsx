@@ -11,15 +11,23 @@ const initialCredential = {
 
 const SignUp = () => {
   const [credential, setCredential] = useState(initialCredential);
+  const [errText, setErrText] = useState('')
+
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setCredential({ ...credential, [id]:value })
+    setErrText('')
   }
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    //if(credential.password !==)
-    console.log(credential) // post request to login endpoint
+    if(!credential.username || !credential.password || !credential.passwordConfirm) {
+      setErrText('Please enter valid input')
+    } else if(credential.password !== credential.passwordConfirm){
+      setErrText('Password Not Matching')
+    } else {
+      console.log(credential) // post request to login endpoint
+    }
   }
 
   return (
@@ -28,10 +36,11 @@ const SignUp = () => {
 
       <div style={{textAlign:'center'}}>
         <FormControl variant="standard">
-          <TextField id="username" value={credential.username} onChange={handleInputChange} label="Create User Name" variant="standard" />
-          <TextField id="password" type="password" value={credential.password} onChange={handleInputChange} label="Password" variant="standard" />
-          <TextField id="passwordConfirm" type="passwordConfirm" value={credential.passwordConfirm} onChange={handleInputChange} label="Re-Enter Password" variant="standard" />
+          <TextField required id="username" value={credential.username} onChange={handleInputChange} label="Create User Name" variant="standard" />
+          <TextField required id="password" type="password" value={credential.password} onChange={handleInputChange} label="Password" variant="standard" />
+          <TextField required id="passwordConfirm" type="password" value={credential.passwordConfirm} onChange={handleInputChange} label="Re-Enter Password" variant="standard" />
           <Button type="submit" onClick={handleFormSubmit}>Create Account</Button>
+          <div style={{color:'red'}}>{errText}</div>
         </FormControl>
       </div>
     </>
