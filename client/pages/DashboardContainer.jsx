@@ -14,7 +14,7 @@ import Created_Modified_at from '../components/Created_Modified_at';
 import Description from '../components/Description';
 import EngineerAssigned from '../components/EngineerAssigned';
 import List from '../components/List';
-import Platform from '../components/Platform';
+import Notes from '../components/Notes';
 import ResolutionStatement from '../components/ResolutionStatement';
 import Status_Severity from '../components/Status_Severity';
 import StepsToRecreate from '../components/StepsToRecreate';
@@ -26,6 +26,7 @@ const Dashboard = () => {
   const { user, setUser } = useContext(UserContext);
   const [bugs, setBugs] = useState([]);
   const [selectedBug, setSelectedBug] = useState({});
+  const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     fetch('/bugs').then((res) => res.json())
@@ -35,6 +36,7 @@ const Dashboard = () => {
         setSelectedBug(bugs[0])
       });
   }, []);
+
 
   return (
     <div>
@@ -68,11 +70,11 @@ const Dashboard = () => {
             <Platform platform={selectedBug.platform} />
           </Paper>
         </Grid> */}
-        {/* <Grid item md={3}>
+        {notes.length ? <Grid item md={3}>
           <Paper>
-            <Platform platform={selectedBug.platform} />
+            <Notes notes={notes} />
           </Paper>
-        </Grid> */}
+        </Grid> : null }
         <Grid item md={3}>
           <Paper>
           <Status_Severity
@@ -110,7 +112,7 @@ const Dashboard = () => {
         </Grid> */}
         <Grid item md={9}>
           <Paper>
-            <List bugList={bugs} selectBug={setSelectedBug} />
+            <List bugList={bugs} selectBug={setSelectedBug} getNotes={setNotes} />
           </Paper>
         </Grid>
       </Grid>
