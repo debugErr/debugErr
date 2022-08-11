@@ -26,13 +26,13 @@ DROP TYPE IF EXISTS "role";
 CREATE TYPE status AS ENUM ('Submitted', 'Reviewed', 'Duplicate', 'Reproduced', 'Assigned', 'Resolved');
 CREATE TYPE stage AS ENUM ('Review', 'Verified', 'NonVerified', 'Development', 'Testing', 'Released');
 CREATE TYPE severity AS ENUM ('Typo', 'Low', 'Serious', 'Critical', 'ShowStopper');
-CREATE TYPE role AS ENUM ('EndeUser', 'Admin', 'Engineer');
+CREATE TYPE role AS ENUM ('EndUser', 'Admin', 'Engineer');
 
 CREATE TABLE "User" (
   "idUser" SERIAL NOT NULL,
   "firstName" varchar(45),
   "lastName" varchar(45),
-  "userName" varchar(45),
+  "userName" varchar(45) UNIQUE,
   "email" varchar(45),
   "hashedPass" varchar(60),
   "role" role,
@@ -131,7 +131,7 @@ INSERT INTO "User" (
     , 'Veltsos'
     , 'JVel51'
     , 'JV51@gmail.com'
-    , 'HGV675&=*vt213'
+    , 'password123'
     , 'Admin'
     );
 
@@ -147,7 +147,7 @@ INSERT INTO "User" (
     , 'Hur'
     , 'MH51'
     , 'MH51@gmail.com'
-    , 'kdGDf64455@!#4sds'
+    , 'password321'
     , 'Admin'
     );
 
@@ -164,7 +164,7 @@ INSERT INTO "User" (
     , 'White'
     , 'JW51'
     , 'JW51@gmail.com'
-    , 'LFVDGY445w!24#$53'
+    , '123'
     , 'Admin'
     );
 
@@ -181,7 +181,7 @@ INSERT INTO "User" (
     , 'Brighi'
     , 'BB51'
     , 'BB51@gmail.com'
-    , 'sdfD*^3erYe3!@'
+    , 'passwordpassword'
     , 'Admin'
     );
 
@@ -197,8 +197,8 @@ INSERT INTO "User" (
     , 'Rubble'
     , 'BB51'
     , 'BB51@gmail.com'
-    , 'sdfD*^3erYe3!@'
-    , 'Admin'
+    , 'testpassword'
+    , 'Engineer'
     );
 
 INSERT INTO "User" (
@@ -213,8 +213,8 @@ INSERT INTO "User" (
     , 'Johnson'
     , 'AJ51'
     , 'AJ51@gmail.com'
-    , 'fgfgfgy44%$54f'
-    , 'Admin'
+    , 'newpass'
+    , 'Engineer'
     );
 
 INSERT INTO "User" (
@@ -227,10 +227,10 @@ INSERT INTO "User" (
   ) VALUES (
     'Fred'
     , 'Flintstone'
-    , 'BB51'
-    , 'BB51@gmail.com'
-    , 'sdfD*^3erYe3!@'
-    , 'Admin'
+    , 'FF51'
+    , 'FF51@gmail.com'
+    , 'pw321'
+    , 'EndUser'
     );
 
 INSERT INTO "App" (
@@ -277,7 +277,7 @@ INSERT INTO "App" (
 "appName"
 ,"appVersion"
 ) VALUES (
-  'Blah Blah'
+  'Betterer Reads'
   , '99.8'
 );
 
@@ -338,6 +338,46 @@ INSERT INTO "Bug" (
     4,
     'numbers concatenating',
     'Reproduced',
+    'ShowStopper',
+    'Development',
+    'Check terminal for console.log labled Adding 1&10 and the log returns the string 110 and not 11'
+  );
+
+  INSERT INTO "Bug" (
+  "userSubmitted"
+  ,"engineerAssigned" 
+  ,"app" 
+  ,"title"
+  ,"status"  
+  ,"severity"
+  ,"stage" 
+  ,"stepsToRecreate"
+  ) VALUES (
+    2,
+    1,
+    2,
+    'numbers concatenating',
+    'Reproduced',
+    'Typo',
+    'Development',
+    'Check terminal for console.log labled Adding 1&10 and the log returns the string 110 and not 11'
+  );
+
+  INSERT INTO "Bug" (
+  "userSubmitted"
+  ,"engineerAssigned" 
+  ,"app" 
+  ,"title"
+  ,"status"  
+  ,"severity"
+  ,"stage" 
+  ,"stepsToRecreate"
+  ) VALUES (
+    3,
+    5,
+    1,
+    'numbers concatenating',
+    'Reproduced',
     'Typo',
     'Development',
     'Check terminal for console.log labled Adding 1&10 and the log returns the string 110 and not 11'
@@ -392,7 +432,18 @@ INSERT INTO "EngineeringNote" (
    4,
    1,
    'Bug has been assigned to an engineer',
-   'Bug #3 Note #1'
+   'Bug #1 Note #1'
+);
+INSERT INTO "EngineeringNote" (
+  "idUser"
+  ,"idBug"
+  ,"noteBody"
+  ,"noteTitle"
+) VALUES (
+   5,
+   2,
+   'Bug has been assigned to an engineer',
+   'Bug #2 Note #1'
 );
 
 INSERT INTO "EngineeringNote" (
@@ -404,7 +455,31 @@ INSERT INTO "EngineeringNote" (
    2,
    3,
    'Bug needs to be reproduced before it can get verified',
-   'Bug #1 Note #1'
+   'Bug #3 Note #1'
+);
+
+INSERT INTO "EngineeringNote" (
+  "idUser"
+  ,"idBug"
+  ,"noteBody"
+  ,"noteTitle"
+) VALUES (
+   1,
+   3,
+   'Bug needs to be reproduced before it can get verified',
+   'Bug #3 Note #2'
+);
+
+INSERT INTO "EngineeringNote" (
+  "idUser"
+  ,"idBug"
+  ,"noteBody"
+  ,"noteTitle"
+) VALUES (
+   3,
+   3,
+   'Bug has finished verification stage and can be assigned',
+   'Bug #3 note #3'
 );
 
 INSERT INTO "BugPlatform" (

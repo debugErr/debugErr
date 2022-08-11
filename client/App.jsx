@@ -7,7 +7,7 @@ import SignUp from './pages/SignUp';
 import AddBug from './pages/AddBug';
 
 function App() {
-  const [user, setUser] = useState('user login object');
+  const [user, setUser] = useState(null);
   const providerValue = useMemo(() => ({ user, setUser }), [user, setUser])
 
   const element = (
