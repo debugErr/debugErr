@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { FormControl, TextField, Button } from '@mui/material';
 import NavBar from '../components/NavBar';
 import UserContext from '../UserContext';
@@ -21,11 +21,13 @@ const LogIn_SignUp = () => {
   }
 
   const handleFormSubmit = (e) => {
+    console.log('🔴🟠🟡🟢🔵🟣 | file: LogIn_SignUp.jsx | line 45 | handleFormSubmit | e', e);
     e.preventDefault();
     if(!credential.username || !credential.password) {
       setErrText('Please enter valid input')
     } else {
-      console.log(credential) 
+      console.log("CREDENTIAL", credential) 
+      console.log('🔴🟠🟡🟢🔵🟣 | file: LogIn_SignUp.jsx | line 29 | handleFormSubmit | credential', credential);
       // post request to login endpoint
       fetch('/login', {
         method:'POST', 
@@ -36,7 +38,7 @@ const LogIn_SignUp = () => {
         if(res.status === 200) {
           // ======= SAVE USER DATA ==========
           setUser('some user')  // <<<<<<<<<<<< HERE
-          window.location.href = '/'
+          //window.location.href = '/'
         }
       })
     }
@@ -47,7 +49,7 @@ const LogIn_SignUp = () => {
       <NavBar />
 
       <div style={{textAlign:'center'}}>
-        {user}
+        {user && (<Navigate to='/' replace={true} />)}
         <FormControl variant="standard">
           <TextField required id="username" value={credential.username} onChange={handleInputChange} label="User Name" variant="standard" />
           <TextField required id="password" type="password" value={credential.password} onChange={handleInputChange} label="Password" variant="standard" />

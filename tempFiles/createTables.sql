@@ -32,7 +32,7 @@ CREATE TABLE "User" (
   "idUser" SERIAL NOT NULL,
   "firstName" varchar(45),
   "lastName" varchar(45),
-  "userName" varchar(45),
+  "userName" varchar(45) UNIQUE,
   "email" varchar(45),
   "hashedPass" varchar(60),
   "role" role,
