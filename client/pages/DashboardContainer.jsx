@@ -14,7 +14,7 @@ import Created_Modified_at from '../components/Created_Modified_at';
 import Description from '../components/Description';
 import EngineerAssigned from '../components/EngineerAssigned';
 import List from '../components/List';
-import Platform from '../components/Platform';
+import Notes from '../components/Notes';
 import ResolutionStatement from '../components/ResolutionStatement';
 import Status_Severity from '../components/Status_Severity';
 import StepsToRecreate from '../components/StepsToRecreate';
@@ -36,50 +36,6 @@ const Dashboard = () => {
         setSelectedBug(bugs[0])
       });
   }, []);
-
-  useEffect(() => {
-    fetch(`/bugs/${selectedBug.id}`).then(res => res.json())
-    .then(data => {
-        console.log(data)
-        setNotes(data)
-      })
-  }, [selectedBug]);
-
-  // {
-  //   "bug": [
-  //     {
-  //       "id": 1,
-  //       "title": "Query Mixup",
-  //       "Application": "Solid Structure",
-  //       "Version": "1.0 BETA",
-  //       "Status": "Assigned",
-  //       "Stage": "Testing",
-  //       "Severity": "Typo",
-  //       "Steps To Recreate": "Click on enter button on UI and then reload the page",
-  //       "Resolution Statement": null,
-  //       "Submitted By": "Jim",
-  //       "Assigned To": "Jared"
-  //     }
-  //   ],
-  //   "eNotes": [
-  //     {
-  //       "id": 5,
-  //       "Notes": "Verification needed before continuing",
-  //       "Note Title": "Verify Bug",
-  //       "Submitted By": "Jared",
-  //       "Bug Title": "Query Mixup",
-  //       "Bug ID": 1
-  //     },
-  //     {
-  //       "id": 1,
-  //       "Notes": "Bug has been assigned to an engineer",
-  //       "Note Title": "Bug #3 Note #1",
-  //       "Submitted By": "Brandon",
-  //       "Bug Title": "Query Mixup",
-  //       "Bug ID": 1
-  //     }
-  //   ]
-  // }
 
 
   return (
@@ -116,7 +72,7 @@ const Dashboard = () => {
         </Grid> */}
         {notes.length ? <Grid item md={3}>
           <Paper>
-            <Platform notes={notes} />
+            <Notes notes={notes} />
           </Paper>
         </Grid> : null }
         <Grid item md={3}>
@@ -156,7 +112,7 @@ const Dashboard = () => {
         </Grid> */}
         <Grid item md={9}>
           <Paper>
-            <List bugList={bugs} selectBug={setSelectedBug} />
+            <List bugList={bugs} selectBug={setSelectedBug} getNotes={setNotes} />
           </Paper>
         </Grid>
       </Grid>

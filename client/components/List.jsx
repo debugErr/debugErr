@@ -22,7 +22,7 @@ const columns = [
   { field: 'Version', headerName: 'Version', flex: 1, minWidth: 100 },
 ];
 
-export default function List({ bugList, selectBug }) {
+export default function List({ bugList, selectBug, getNotes }) {
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
@@ -34,6 +34,11 @@ export default function List({ bugList, selectBug }) {
         onRowClick={(rowData, rowState) => {
           console.log(rowData.row);
           selectBug(rowData.row);
+          fetch(`/bugs/${rowData.row.id}`).then(res => res.json())
+            .then(noteData => {
+              console.log(noteData.eNotes);
+              getNotes(noteData.eNotes)
+            });
         }}
       />
     </div>
