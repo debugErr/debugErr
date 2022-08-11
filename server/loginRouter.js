@@ -13,7 +13,7 @@ console.log('🔴🟠🟡🟢🔵🟣 | file: loginRouter.js | line 6 | loginRou
     if (!data.rows[0]) return res.status(401).send('Invalid Login Cradentials - UN');
     if (data.rows[0].hashedPass === password) {
       //* Passwords Match
-      return res.status(200).send(data.rows[0]);
+      return res.status(200).send(username);
     }
     return res.status(401).send('Invalid Login Cradentials - PW');
   });
