@@ -3,6 +3,7 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 const bugRouter = require('./bugRouter');
+const loginRouter = require('./loginRouter');
 const enoteRouter = require('./engineerNotesRouter');
 require('dotenv').config();
 
@@ -26,6 +27,8 @@ app.set('db', db);
 app.use('/bugs', bugRouter);
 
 app.use('/enote', enoteRouter);
+
+app.use('/login', loginRouter);
 
 app.get('/', (req, res) => {
   return res
